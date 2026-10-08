@@ -23,8 +23,12 @@ def est_dependant(profil):
     Returns:
         bool: True si l'étudiant est dépendant, False sinon
     """
+    if profil[6] >= 7:
+        return True
+    else:
+        return False
     pass
-
+print(est_dependant((1, "France", "Instagram", 3.5, 7.0, 8, 7)))
 
 def est_avant(profil1, profil2):
     """indique si profil1 se place avant profil2 dans l'ordre de tri des listes de profils,
@@ -38,7 +42,9 @@ def est_avant(profil1, profil2):
 
     Returns:
         bool: True si profil1 se place avant profil2, False sinon
-    """
+    """ 
+    if profil1[1] < profil2[1]:
+        return True
     pass
 
 
