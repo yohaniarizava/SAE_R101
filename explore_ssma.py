@@ -45,7 +45,15 @@ def est_avant(profil1, profil2):
     """ 
     if profil1[1] < profil2[1]:
         return True
+    elif profil1[1] == profil2[1]:
+        if profil1[0] < profil2[0]:
+            return True
+        else:
+            return False
+    else:
+        return False
     pass
+print(est_avant((2, "France", "Instagram", 3.5, 7.0, 8, 7), (1, "France", "Facebook", 2.0, 8.0, 9, 6)))
 
 
 def moyenne_heures_ecran(liste_profils):
@@ -57,7 +65,13 @@ def moyenne_heures_ecran(liste_profils):
     Returns:
         float: le temps d'écran quotidien moyen en heures, ou None si la liste est vide
     """
+    total_heures = 0
+    for profil in liste_profils:
+        total_heures += profil[3]
+    moyenne = total_heures / len(liste_profils)
+    return moyenne  
     pass
+print(moyenne_heures_ecran([(1, "France", "Instagram", 3.5, 7.0, 8, 7), (2, "France", "Facebook", 2.0, 8.0, 9, 6), (45, 'Belgium', 'TikTok', 6.0, 5.5, 5, 8)]))
 
 
 def taux_dependance(liste_profils):
@@ -69,6 +83,15 @@ def taux_dependance(liste_profils):
     Returns:
         float: le pourcentage d'étudiants dépendants, ou None si la liste est vide
     """
+    if len(liste_profils) == 0:
+        return None
+    else:
+        nb_dependants = 0
+        for profil in liste_profils:
+            if est_dependant(profil):
+                nb_dependants += 1
+        pourcentage = (nb_dependants / len(liste_profils)) * 100
+        return pourcentage
     pass
 
 
@@ -82,6 +105,14 @@ def profil_plus_dependant(liste_profils):
     Returns:
         tuple: le profil ayant le plus fort score d'addiction, ou None si la liste est vide
     """
+    if len(liste_profils) == 0:
+        return None
+    else:   
+        profil_max = liste_profils[0]
+        for profil in liste_profils:
+            if profil[6] > profil_max[6]:
+                profil_max = profil
+        return profil_max
     pass
 
 
